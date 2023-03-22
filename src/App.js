@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Game from "./components/Game";
 import Result from "./components/Result";
 import Start from "./components/Start";
+import "./App.css";
 
 class App extends Component {
   constructor(props, context) {
@@ -29,6 +30,8 @@ class App extends Component {
           playerWins: args[1],
         });
         break;
+      default:
+        break;
     }
   };
 
@@ -39,18 +42,28 @@ class App extends Component {
   render() {
     switch (this.state.page) {
       case "game":
-        return <Game changePage={this.changePage} name={this.state.name} />;
+        return (
+          <div className={"field"}>
+            <Game changePage={this.changePage} name={this.state.name} />
+          </div>
+        );
       case "result":
         return (
-          <Result
-            changePage={this.changePage}
-            name={this.state.name}
-            playerWins={this.state.playerWins}
-            compWins={this.state.compWins}
-          />
+          <div className={"field"}>
+            <Result
+              changePage={this.changePage}
+              name={this.state.name}
+              playerWins={this.state.playerWins}
+              compWins={this.state.compWins}
+            />
+          </div>
         );
       default:
-        return <Start changePage={this.changePage} name={this.state.name} />;
+        return (
+          <div className={"field"}>
+            <Start changePage={this.changePage} name={this.state.name} />;
+          </div>
+        );
     }
   }
 }

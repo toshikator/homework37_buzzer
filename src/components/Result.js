@@ -9,12 +9,18 @@ const Result = (props) => {
     }
   };
   return (
-    <div>
-      <h1>Result</h1>
-      <h2>
+    <div className={"playerForm"}>
+      <h1 className={"readyForWar"}>Result</h1>
+      <h2 className={"readyForWar small"}>
         Computer {props.compWins}:{props.playerWins} {props.name}
       </h2>
-      <button onClick={() => props.changePage("game")}>Again</button>
+      {/*<p>{getResult()}</p>*/}
+      <button
+        className={"startButton"}
+        onClick={() => props.changePage("game")}
+      >
+        Again
+      </button>
       <p>{getResult()}</p>
     </div>
   );

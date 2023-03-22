@@ -10,14 +10,18 @@ class Start extends Component {
 
   render() {
     return (
-      <div>
+      <div className={"playerForm"}>
         <h1>Ready to BUZZZ</h1>
         <input
+          className={"playerName"}
           onChange={(event) => this.setState({ name: event.target.value })}
           placeholder={"Enter your name"}
           type={"text"}
         />
-        <button onClick={() => this.props.changePage("game", this.state.name)}>
+        <button
+          className={"startButton"}
+          onClick={() => this.props.changePage("game", this.state.name)}
+        >
           Start
         </button>
       </div>

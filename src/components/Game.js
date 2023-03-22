@@ -58,11 +58,16 @@ class Game extends Component {
   render() {
     return (
       <div>
-        <h1>Computer</h1>
-        <h2>{this.state.compCard}</h2>
-        <h2>{this.state.playerCard}</h2>
-        <h1>{this.props.name}</h1>
-        <button onClick={() => this.handleClickNext()}>Next</button>
+        <h1 className={"players computer"}>Computer</h1>
+        <h2 className={"playerDeck"}>{this.state.compCard}</h2>
+        <h2 className={"playerDeck"}>{this.state.playerCard}</h2>
+        <h1 className={"players you"}>{this.props.name}</h1>
+        <button
+          className={"ingameButton"}
+          onClick={() => this.handleClickNext()}
+        >
+          Next
+        </button>
       </div>
     );
   }
