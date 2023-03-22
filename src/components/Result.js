@@ -4,7 +4,7 @@ const Result = (props) => {
   const getResult = () => {
     if (props.compWins > props.playerWins) {
       return "u looooose";
-    } else {
+    } else if (props.compWins < props.playerWins) {
       return "u WIN!!";
     }
   };

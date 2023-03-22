@@ -27,6 +27,14 @@ class Game extends Component {
         deck.push({ range: j, suit: suit });
       }
     }
+    for (let i = deck.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = deck[i];
+      deck[i] = deck[j];
+      deck[j] = temp;
+    }
+    this.compCards = deck.slice(0, deck.length / 2);
+    this.playerCards = deck.slice(deck.length / 2, deck.length);
   }
 
   handleClickNext = () => {
