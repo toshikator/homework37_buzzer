@@ -8,11 +8,28 @@ class App extends Component {
     super(props, context);
     this.state = {
       page: "start",
+      name: "Player",
+      compWins: 0,
+      playerWins: 0,
     };
   }
 
-  changePage = (page) => {
-    this.setState({ page });
+  changePage = (page, ...args) => {
+    switch (args.length) {
+      case 0:
+        this.setState({ page });
+        break;
+      case 1:
+        this.setState({ page: page, name: args[0] || this.state.name });
+        break;
+      case 2:
+        this.setState({
+          page: page,
+          compWins: args.at(0),
+          playerWins: args[1],
+        });
+        break;
+    }
   };
 
   componentDidMount() {
@@ -22,11 +39,18 @@ class App extends Component {
   render() {
     switch (this.state.page) {
       case "game":
-        return <Game changePage={this.changePage} />;
+        return <Game changePage={this.changePage} name={this.state.name} />;
       case "result":
-        return <Result changePage={this.changePage} />;
+        return (
+          <Result
+            changePage={this.changePage}
+            name={this.state.name}
+            playerWins={this.state.playerWins}
+            compWins={this.state.compWins}
+          />
+        );
       default:
-        return <Start changePage={this.changePage} />;
+        return <Start changePage={this.changePage} name={this.state.name} />;
     }
   }
 }
